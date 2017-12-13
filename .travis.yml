@@ -5,6 +5,7 @@ dist: trusty
 before_install:
   # C++14
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
   - sudo apt-get update -qq
 
 install: 
@@ -13,7 +14,7 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
   - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
-  - sudo apt-get install qt3d5-dev qtbase5-dev
+  - sudo apt-get install qt3d5-dev qtbase5-dev qt5-default qttools5-dev-tools
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
@@ -23,6 +24,7 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - qmake snake.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-  - make qmake_all
+  - qmake -project
+  - qmake snake.pro
+  - make
   - ./snake
