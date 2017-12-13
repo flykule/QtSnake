@@ -15,7 +15,7 @@ install:
   # Qt5
   - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
   - sudo apt-get install -qq qt3d5-dev qtbase5-dev qt5-default qttools5-dev-tools
-  - sudo apt-get install -qq libqt5opengl5-dev libqt5opengl5-gles-dev
+  - sudo apt-get install -qq libqt5opengl5-dev
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
