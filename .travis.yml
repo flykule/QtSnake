@@ -13,7 +13,7 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
   - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
-  - sudo apt-get install qt3d5-dev
+  - sudo apt-get install qt3d5-dev qtbase5-dev
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
