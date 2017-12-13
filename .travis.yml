@@ -24,7 +24,7 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - qmake -project
-  - qmake snake.pro
+  - qmake -qt=qt5 -v
+  - qmake -qt=qt5 
   - make
-  - ./snake
+#- ./snake
