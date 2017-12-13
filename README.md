@@ -19,7 +19,9 @@ The directory structure is:
 	Resources:
 		main.qml the main page to show game area
 		qtquickcontrols2.conf the style and theme configuration file 
-	
+		
+###Entity struts
+![](http://obip31jcs.bkt.clouddn.com/17-12-13/81688963.jpg)
 	
 	
 

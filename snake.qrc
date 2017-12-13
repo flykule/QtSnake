@@ -2,5 +2,14 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>GameArea.qml</file>
+        <file>GameEntity.qml</file>
+        <file>Wall.qml</file>
+        <file>SnakePart.qml</file>
+        <file>Apple.qml</file>
+        <file>Background.qml</file>
+        <file>MaterialBackground.qml</file>
+        <file>board.js</file>
+        <file>factory.js</file>
     </qresource>
 </RCC>

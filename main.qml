@@ -1,37 +1,48 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick.Scene3D 2.0
 
-ApplicationWindow {
+Item {
+    id:mainView
+
+    property int score: 0
+    readonly property alias window: mainView
+
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
+    width: 1280
+    height: 768
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1 {
-        }
-
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
-        }
+    Keys.onEscapePressed: {
+        Qt.quit()
     }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("First")
+    Rectangle{
+        // heads up display
+        id:hud
+
+        color:"#31363b"
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: 60
+
+        Label  {
+            id:snakeSizeText
+            anchors.centerIn: parent
+            font.pointSize: 25
+            color: "white"
+            text: "Score: "+score
         }
-        TabButton {
-            text: qsTr("Second")
-        }
+
+    }
+
+    Scene3D{
+        id:scene
+        anchors.top: hud.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        focus: true
+        aspects: "input"
     }
 }
