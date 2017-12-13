@@ -4,7 +4,6 @@ dist: trusty
 
 before_install:
   # C++14
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
   - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
   - sudo apt-get update -qq
 
@@ -19,11 +18,16 @@ install:
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
 before_script:
+    #Qt variables
+  - QTDIR="/opt/qt55"
+  - PATH="$QTDIR/bin:$PATH"
+  - source /opt/qt55/bin/qt55-env.sh
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 
 script: 
+  - source /opt/qt5/bin/qt5-env.sh
   - qmake -qt=qt5 -v
   - qmake -qt=qt5 
   - make
