@@ -4,18 +4,16 @@ dist: trusty
 
 before_install:
   # C++14
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo add-apt-repository ppa:beineri/opt-qt593-trusty
   - sudo apt-get update -qq
 
 install: 
   # C++14
-  - sudo apt-get install -qq g++-5
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
+  # - sudo apt-get install -qq g++-5
+  # - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
-  - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
-  - sudo apt-get install -qq qt3d5-dev qtbase5-dev qt5-default qttools5-dev-tools
-  - sudo apt-get install -qq libqt53d5 qt3d5-dev
+  - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev libqt53d5 
+  - sudo apt-get install -qq qtbase5-dev qt5-default qttools5-dev-tools
   # - sudo apt-get install libqt53dcore5 libqt53dextras5 libqt53drender5 libqt53dinput5
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
@@ -27,7 +25,9 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - qmake -qt=qt5 -v
-  - qmake -qt=qt5 
+  - source /opt/qt593/bin/qt593-env.sh
+  - cd src
+  - /opt/qt593/bin/qmake -project
+  - /opt/qt593/bin/qmake
   - make
 #- ./snake
