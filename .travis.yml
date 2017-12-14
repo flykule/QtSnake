@@ -14,7 +14,7 @@ install:
   - sudo apt-get install -qq g++-5
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
-  - sudo apt-get install -qq qt59declarative qt593d qt59quickcontrols qt59quickcontrols2 qt59base qt59tools qt59-meta-full
+  - sudo apt-get install -qq qt59declarative qt593d qt59quickcontrols qt59quickcontrols2 qt59base qt59tools
   # - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
