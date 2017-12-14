@@ -14,7 +14,7 @@ install:
   - sudo apt-get install -qq g++-5
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
-  - sudo apt-get install -qq libqt5ebkit5-dev qt59declarative qt593d  
+  - sudo apt-get install -qq qt59declarative qt593d qt59quickcontrols qt59quickcontrols2
   # - sudo apt-get install libqt53dcore5 libqt53dextras5 libqt53drender5 libqt53dinput5
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
