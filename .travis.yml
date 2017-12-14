@@ -1,6 +1,6 @@
 language: cpp
 compiler: gcc
-dist: xenial
+dist: universe
 
 before_install:
   # C++14
@@ -15,8 +15,8 @@ install:
   # Qt5
   - sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
   - sudo apt-get install -qq qt3d5-dev qtbase5-dev qt5-default qttools5-dev-tools
-  - sudo apt-get install -qq libqt5opengl5-dev
-  - sudo apt-get install -qq libqt53dcore5 libqt53drenderer5 libqt53dquick5 libqt53dinput5
+  - sudo apt-get install -qq libqt53d5
+  # - sudo apt-get install -qq libqt53dcore5 libqt53dextras5 libqt53drenderer5 libqt53dquick5 libqt53dinput5
   - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
@@ -27,7 +27,6 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - source /opt/qt5/bin/qt5-env.sh
   - qmake -qt=qt5 -v
   - qmake -qt=qt5 
   - make
