@@ -15,8 +15,7 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
   # Qt5
   - sudo apt-get install -qq qt59declarative qt593d qt59quickcontrols qt59quickcontrols2
-  # - sudo apt-get install libqt53dcore5 libqt53dextras5 libqt53drender5 libqt53dinput5
-  - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+  # - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
 before_script:
@@ -26,9 +25,9 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - source /opt/qt593/bin/qt593-env.sh
+  - source /opt/qt59/bin/qt59-env.sh
   - cd src
-  - /opt/qt593/bin/qmake -project
-  - /opt/qt593/bin/qmake
+  - /opt/qt59/bin/qmake -project
+  - /opt/qt59/bin/qmake
   - make
 #- ./snake
