@@ -11,5 +11,6 @@
         <file>MaterialBackground.qml</file>
         <file>board.js</file>
         <file>factory.js</file>
+        <file>engine.js</file>
     </qresource>
 </RCC>
