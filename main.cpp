@@ -1,6 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlEngine>
 #include <QQuickView>
 #include <QtGui/QOpenGLContext>
 

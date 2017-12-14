@@ -17,3 +17,26 @@ GameFactory.prototype.removeAllEntities = function(){
         this.entities[i].setParent(null);
     }
 }
+
+GameFactory.prototype.createGameEntity= function(type,column,row){
+    var component;
+    switch(type){
+    case SNAKE_TYPE:
+        component = snakeComponent;
+        break;
+    case WALL_TYPE:
+        component = wallComponent;
+        break;
+    case APPLE_TYPE:
+        component=appleComponent;
+        break;
+    }
+    var gameEntity = component.createObject(this.parentEntity);
+    gameEntity.setParent(this.parentEntity);
+
+    this.board.setData(gameEntity,column,row);
+    gameEntity.gridPosition=Qt.vector2d(column,row);
+    gameEntity.position.x = column * this.board.blockSize;
+    gameEntity.position.y = row * this.board.blockSize;
+    return gameEntity;
+}
