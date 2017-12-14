@@ -31,6 +31,6 @@ script:
   - source /opt/qt59/bin/qt59-env.sh
   # - cd src
   - /opt/qt59/bin/qmake -project
-  - /opt/qt59/bin/qmake
+  - /opt/qt59/bin/qmake snake.pro
   - make
 #- ./snake
