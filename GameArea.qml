@@ -60,5 +60,10 @@ Entity {
         onPressed: {}
     }
 
+    Background{
+        positon: Qt.vector3d(camera.x,camera.y,0)
+        scale3D: Qt.vector3d(camera.x*2,camera.y*2,0)
+    }
+
     components: [frameFraph,input]
 }
