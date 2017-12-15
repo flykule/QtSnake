@@ -7,8 +7,13 @@ GameEntity {
     id:root
     type:Factory.APPLE_TYPE
 
-    property alias positon: transform.translation
+    property alias position: transform.translation
     property alias color: material.diffuse
+
+    TextureLoader {
+        id: rectTexture
+        source: "qrc:/models/apple-texture.png"
+    }
 
     Transform{
         id:transform
@@ -17,12 +22,12 @@ GameEntity {
 
     Mesh{
         id:mesh
-        source:"models/apple.obj"
+        source: "models/apple.obj"
     }
 
     DiffuseMapMaterial{
         id:material
-        diffuse: "qrc:/models/apple-texture.png"
+        diffuse: rectTexture
     }
 
     components: [material,mesh,transform]

@@ -1,8 +1,6 @@
 // Qt way to import another js file.
-.import "factory.js"
-as Factory
-    .import "board.js"
-as Board
+.import "factory.js" as Factory
+.import "board.js" as Board
 
 var COLUM_COUNT = 50;
 var ROW_COUNT = 29;
@@ -25,11 +23,11 @@ function start() {
 }
 
 function initEngine() {
-    timer.interval = initTimerInterval();
+    timer.interval = initialTimeInterval;
     score = 0;
 
     factory.board = board;
-    factory.parentEntity = fameRoot;
+    factory.parentEntity = gameRoot;
     factory.removeAllEntities();
 
     board.init();
@@ -61,14 +59,16 @@ function spawnApple() {
     var isFound = false;
     var position;
     while (!isFound) {
-        position = Qt.vector2d(Math.floor(Math.random() *
-                board.columnCount),
-            Math.floor(Math.random() *
-                board.rowCount));
-        factory.createGameEntity(Factory.APPLE_TYPE, position.x, position.y);
-        if (timerInterval > 10) {
-            timerInterval -= 2;
+        position = Qt.vector2d(Math.floor(Math.random() * board.columnCount),
+            Math.floor(Math.random() * board.rowCount));
+        // @disable-check M126 We use null represent null
+        if(board.at(position.x,position.y) == null){
+            isFound =true;
         }
+    }
+    factory.createGameEntity(Factory.APPLE_TYPE, position.x, position.y);
+    if (timerInterval > 10) {
+        timerInterval -= 2;
     }
 }
 
@@ -80,7 +80,7 @@ function setPosition(item, colum, row) {
 }
 
 function moveSnake(column, row) {
-    val last = snake.pop();
+    var last = snake.pop();
     board.setData(null, last.gridPosition.x, last.gridPosition.y);
     setPosition(last, column, row);
     snake.unshift(last);
@@ -115,7 +115,7 @@ function handleKeyEvent(event) {
             break;
 
             // direction left
-        case Qt.Key_H:
+        case Qt.Key_J:
             if (direction != Qt.vector2d(1, 0)) {
                 direction = Qt.vector2d(-1, 0);
             }

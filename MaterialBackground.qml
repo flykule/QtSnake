@@ -35,41 +35,79 @@ Material {
         }
     ]
 
-    effect: Effect{
+    effect: Effect {
+        property string vertex: "qrc:/shaders/gl3/grass.vert"
+        property string fragment: "qrc:/shaders/gl3/grass.frag"
+        property string vertexES: "qrc:/shaders/es2/grass.vert"
+        property string fragmentES: "qrc:/shaders/es2/grass.frag"
+
+        FilterKey {
+            id: forward
+            name: "renderingStyle"
+            value: "forward"
+        }
+        ShaderProgram {
+            id: gl3Shader
+            vertexShaderCode: loadSource(parent.vertex)
+            fragmentShaderCode: loadSource(parent.fragment)
+        }
+        ShaderProgram {
+            id: esShader
+            vertexShaderCode: loadSource(parent.vertexES)
+            fragmentShaderCode: loadSource(parent.fragmentES)
+        }
+
+        AlphaCoverage { id: alphaCoverage }
+
+        DepthTest {
+            id: depth
+            depthFunction: DepthTest.Less }
+
         techniques: [
-            Technique{
+            // OpenGL 3.1
+            Technique {
+                filterKeys: [ forward ]
                 graphicsApiFilter {
-                    api:GraphicsApiFilter.OpenGL
+                    api: GraphicsApiFilter.OpenGL
+                    profile: GraphicsApiFilter.CoreProfile
                     majorVersion: 3
                     minorVersion: 2
                 }
-
-                renderPasses:RenderPass{
-                    shaderProgram:ShaderProgram{
-                        vertexShaderCode:
-                            loadSource("qrc:/shaders/gl3/grass.vert")
-                            fragmentShaderCode:
-                            loadSource("qrc:/shaders/gl3/grass.frag")
-                    }
+                renderPasses: RenderPass {
+                    shaderProgram: gl3Shader
+//                    renderStates: [alphaCoverage ]
                 }
-            } ,
+            },
+
+            // OpenGLES 2.0
             Technique {
+                filterKeys: [ forward ]
                 graphicsApiFilter {
-                    api:GraphicsApiFilter.OpenGLES
+                    api: GraphicsApiFilter.OpenGLES
                     majorVersion: 2
                     minorVersion: 0
                 }
+                renderPasses: RenderPass {
+                    shaderProgram: esShader
+//                    renderStates: [ alphaCoverage ]
+                }
+            },
 
-                renderPasses:RenderPass{
-                    shaderProgram:ShaderProgram{
-                        vertexShaderCode:
-                            loadSource("qrc:/shaders/gl3/grass.vert")
-                            fragmentShaderCode:
-                            loadSource("qrc:/shaders/gl3/grass.frag")
-                    }
+            // OpenGL ES 2
+            Technique {
+                filterKeys: [ forward ]
+                graphicsApiFilter {
+                    api: GraphicsApiFilter.OpenGLES
+                    profile: GraphicsApiFilter.NoProfile
+                    majorVersion: 2
+                    minorVersion: 0
+                }
+                renderPasses: RenderPass {
+                    shaderProgram: esShader
+//                    renderStates: [ alphaCoverage ]
                 }
             }
-
         ]
     }
 }
+

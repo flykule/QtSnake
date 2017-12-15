@@ -7,7 +7,7 @@ function Board(columnCount,rowCount,blockSize) {
 }
 
 Board.prototype.init = function(){
-    for(var i = 0;i<this.data.length();i++){
+    for(var i = 0;i<this.data.length;i++){
         this.data[i] = null;
     }
 }

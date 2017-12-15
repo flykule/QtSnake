@@ -44,5 +44,23 @@ Item {
         anchors.right: parent.right
         focus: true
         aspects: "input"
+
+        GameArea{
+            id:gameArea
+            initialSnakeSize: 5
+        }
     }
+
+//    OverlayItem{
+//        id:overlayItem
+//        anchors.fill:mainView
+//        visible:false
+
+//        Connections{
+//            target: gameArea
+//            onStateChanged:{
+//                overlayItem.state = gameArea.state;
+//            }
+//        }
+//    }
 }

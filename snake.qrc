@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>qtquickcontrols2.conf</file>
         <file>GameArea.qml</file>
         <file>GameEntity.qml</file>
         <file>Wall.qml</file>
@@ -12,5 +11,15 @@
         <file>board.js</file>
         <file>factory.js</file>
         <file>engine.js</file>
+        <file>shaders/gl3/grass.vert</file>
+        <file>shaders/gl3/grass.frag</file>
+        <file>shaders/es2/grass.frag</file>
+        <file>shaders/es2/grass.vert</file>
+        <file>models/apple-texture.png</file>
+        <file>models/apple.obj</file>
+        <file>models/apple.blend</file>
+        <file>images/glowdot.png</file>
+        <file>images/grass.jpg</file>
+        <file>GameOverItem.qml</file>
     </qresource>
 </RCC>

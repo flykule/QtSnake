@@ -3,7 +3,7 @@ import "factory.js" as Factory
 
 GameEntity {
     id:root
-    type:Factory.wallComponent
+    type:Factory.WALL_TYPE
 
     property alias position: transform.translation
 

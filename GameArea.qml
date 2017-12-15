@@ -3,6 +3,7 @@ import Qt3D.Render 2.0
 import Qt3D.Extras 2.0
 import Qt3D.Input 2.0
 import QtQuick 2.9 as QQ2
+import "engine.js" as Engine
 
 Entity {
     id:root
@@ -13,6 +14,16 @@ Entity {
     property int initialSnakeSize: 5
     property string state: ""
 
+    Entity{
+        id:sun
+        components: [
+            DirectionalLight{
+                color:Qt.rgba(0.8,0.8,0.8,0.5)
+                worldDirection: Qt.vector3d(-0.6,-0.5,-1)
+            }
+        ]
+    }
+
     Camera {
         id:camera
         property real x: 24.5
@@ -22,6 +33,7 @@ Entity {
         fieldOfView: 45
         aspectRatio: 16/9
         nearPlane: 0.1
+        farPlane: 1000.0
         position: Qt.vector3d(x,y,33.0)
         upVector: Qt.vector3d(0.0,1.0,0.0)
         viewCenter: Qt.vector3d(x,y,0.0)
@@ -36,32 +48,34 @@ Entity {
     }
 
     KeyboardDevice{
-        id:keyboardDevice
+        id:keyboardController
     }
 
     QQ2.Component.onCompleted: {
         console.log("Start game...");
-        timer.start()
+        Engine.start();
+        timer.start();
     }
 
     QQ2.Timer{
         id:timer
         interval: initialTimeInterval
         repeat: true
-        onTriggered: {}
+        onTriggered: Engine.update()
     }
 
     InputSettings {id:inputSettings}
 
     KeyboardHandler{
         id:input
-        sourceDevice: keyboardDevice
-        focus: true
-        onPressed: {}
+        sourceDevice: keyboardController
+        focus:true
+        onPressed:{Engine.handleKeyEvent(event)}
     }
 
+
     Background{
-        positon: Qt.vector3d(camera.x,camera.y,0)
+        position: Qt.vector3d(camera.x,camera.y,0)
         scale3D: Qt.vector3d(camera.x*2,camera.y*2,0)
     }
 

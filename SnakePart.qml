@@ -7,7 +7,7 @@ GameEntity {
     id:root
     type:Factory.SNAKE_TYPE
 
-    property alias positon: transform.translation
+    property alias position: transform.translation
 
     PhongMaterial{
         id:material
