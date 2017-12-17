@@ -51,16 +51,16 @@ Item {
         }
     }
 
-//    OverlayItem{
-//        id:overlayItem
-//        anchors.fill:mainView
-//        visible:false
+    OverLayItem{
+        id:overlayItem
+        anchors.fill:mainView
+        visible:false
 
-//        Connections{
-//            target: gameArea
-//            onStateChanged:{
-//                overlayItem.state = gameArea.state;
-//            }
-//        }
-//    }
+        Connections{
+            target: gameArea
+            onStateChanged:{
+                overlayItem.state = gameArea.state;
+            }
+        }
+    }
 }

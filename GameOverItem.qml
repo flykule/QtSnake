@@ -11,9 +11,7 @@ Item {
 
     Rectangle{
         anchors.fill: parent
-        color: "black"diffuse: TextureLoader {
-                   source: "qrc:/models/apple-texture.png"
-                   }
+        color: "black"
         opacity: 0.75
     }
 

@@ -21,5 +21,6 @@
         <file>images/glowdot.png</file>
         <file>images/grass.jpg</file>
         <file>GameOverItem.qml</file>
+        <file>OverLayItem.qml</file>
     </qresource>
 </RCC>
